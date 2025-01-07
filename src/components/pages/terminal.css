@@ -1,0 +1,227 @@
+.terminal {
+    background-color: #1e1e1e;
+
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    border-radius: 6px;
+    width: 600px;
+    height: 300px;
+    margin: 100px auto;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333333;
+    padding: 8px 12px;
+}
+
+.terminal-title {
+    color: #cccccc;
+    font-size: 14px;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.close,
+.minimize,
+.maximize {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.close {
+    background-color: #ff5f57;
+}
+
+.minimize {
+    background-color: #ffbd2e;
+}
+
+.maximize {
+    background-color: #28c940;
+}
+
+.terminal-body {
+    padding: 20px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+.terminal-body p {
+    margin: 0;
+    font-size: 16px;
+}
+.fancy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0; /* Remove gap between buttons */
+}
+.fancy {
+    border-radius: 20px;
+
+    color: #fff;
+    cursor: pointer;
+
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 16px; /* Increased font size */
+}
+
+.fancy::before {
+    content: " ";
+    width: 3rem; /* Make the line longer */
+    height: 3px; /* Thicker line */
+    background: rgb(10, 155, 34);
+    position: absolute;
+    top: 50%;
+    left: 1.8em;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+
+.fancy .text {
+    padding-left: 2.5em;
+    color: rgb(70, 145, 9);
+    transition: all 0.3s;
+    font-size: 1.2em; /* Make the text slightly bigger */
+}
+
+.fancy:hover {
+    color: white;
+}
+
+.fancy:hover::before {
+    width: 1.2rem;
+    background: white;
+}
+
+.fancy:hover .text {
+    color: white;
+    padding-left: 2em;
+}
+.terminal-wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    height: 600px;
+    margin: 0 auto;
+
+    color: #01be01;
+    font-family: "Courier New", monospace;
+    overflow: visible; /* Allow overflow */
+}
+
+.terminal-header {
+    background: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #555;
+}
+
+.terminal-content {
+    padding: 20px;
+    height: 85%;
+    overflow-y: scroll; /* Allows scrolling */
+    scrollbar-width: none; /* Hides scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar for IE/Edge */
+}
+
+.terminal-content::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for Chrome, Safari, Opera */
+}
+
+.terminal-input {
+    background: transparent;
+    color: #00ff00;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.terminal-footer {
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.glow-border {
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 8px #00ff00;
+}
+.hero {
+    line-height: 1;
+    display: inline-block;
+    color: #fff;
+    z-index: 2;
+    letter-spacing: 30px;
+    filter: drop-shadow(0 1px 3px);
+}
+
+.hero-1 {
+    line-height: 1;
+    color: #fff;
+    z-index: 2;
+    letter-spacing: 5px;
+    filter: drop-shadow(0 1px 3px);
+}
+
+.hero-2 {
+    line-height: 1;
+    display: inline-block;
+    color: #e04343;
+    z-index: 2;
+    filter: drop-shadow(0 1px 3px);
+}
+
+.hero-3 {
+    line-height: 1;
+    display: inline-block;
+    color: #ffffff;
+    z-index: 2;
+    filter: drop-shadow(0 1px 3px);
+}
+
+/* GLITCH EFFECT */
+.layers {
+    position: relative;
+}
+
+.layers::before,
+.layers::after {
+    content: attr(data-text);
+    position: absolute;
+    width: 110%;
+    z-index: -1;
+}
+
+.layers::before {
+    top: 10px;
+    left: 15px;
+    color: #e0287d;
+}
+
+.layers::after {
+    top: 5px;
+    left: -10px;
+    color: #1bc7fb;
+}
