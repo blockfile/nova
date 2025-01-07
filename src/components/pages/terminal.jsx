@@ -39,7 +39,7 @@ function Terminal() {
                     lowerInput.replace("can you generate", "").trim() !== ""
                 ) {
                     res = await fetch(
-                        "http://localhost:3001/api/generateImages",
+                        "https://app.novaai.systems/api/generateImages",
                         {
                             method: "POST",
                             headers: {
@@ -53,13 +53,16 @@ function Terminal() {
                         }
                     );
                 } else {
-                    res = await fetch("http://localhost:3001/api/generate", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ prompt: input }),
-                    });
+                    res = await fetch(
+                        "http://app.novaai.systems/api/generate",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ prompt: input }),
+                        }
+                    );
                 }
 
                 const data = await res.json();
@@ -146,7 +149,7 @@ function Terminal() {
                                     </p>
                                 )}
                             </div>
-                            <div className="terminal-footer mb-10 ml-6 uppercase text-green-300 font-Graduate">
+                            <div className="terminal-footer mb-10 ml-6 uppercase text-yellow-600 font-Graduate">
                                 <span>C:\Nova\AI></span>
                                 <form
                                     onSubmit={handleSubmit}
