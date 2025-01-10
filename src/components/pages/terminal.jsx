@@ -54,7 +54,7 @@ function Terminal() {
                     );
                 } else {
                     res = await fetch(
-                        "http://app.novaai.systems/api/generate",
+                        "https://app.novaai.systems/api/generate",
                         {
                             method: "POST",
                             headers: {
@@ -70,10 +70,13 @@ function Terminal() {
                 if (data.imageUrl || data.response) {
                     setOutput((prev) => [
                         ...prev,
-                        data.response || "",
+                        "",
+                        <span className="nova-response" key={output.length}>
+                            Nova: {data.response || ""}
+                        </span>,
                         data.imageUrl && (
                             <img
-                                key={output.length}
+                                key={output.length + 1}
                                 src={data.imageUrl}
                                 alt="Generated"
                                 className="mt-4 rounded-lg shadow-lg"
@@ -84,12 +87,21 @@ function Terminal() {
                 } else {
                     setOutput((prev) => [
                         ...prev,
-                        "Error: No response received.",
+                        "",
+                        <span className="nova-response" key={output.length}>
+                            Nova: Error: No response received.
+                        </span>,
                     ]);
                 }
             } catch (error) {
                 console.error("Error:", error);
-                setOutput((prev) => [...prev, "Error fetching response."]);
+                setOutput((prev) => [
+                    ...prev,
+                    "",
+                    <span className="nova-response" key={output.length}>
+                        Nova: Error fetching response.
+                    </span>,
+                ]);
             } finally {
                 setLoading(false);
             }

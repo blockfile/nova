@@ -46,12 +46,10 @@ app.post("/api/generate", async (req, res) => {
 // API Route for Generating Images
 app.post("/api/generateImages", async (req, res) => {
     const { prompt } = req.body;
-    const replicate = new Replicate({
-        auth: REPLICATE_API_TOKEN,
-    });
 
     try {
         console.log("Request Body:", req.body);
+
         const prediction = await replicate.run(
             "black-forest-labs/flux-1.1-pro-ultra",
             {
@@ -64,7 +62,27 @@ app.post("/api/generateImages", async (req, res) => {
 
         console.log("Replicate Prediction:", prediction);
 
-        if (typeof prediction === "string") {
+        if (prediction instanceof ReadableStream) {
+            const reader = prediction.getReader();
+            let chunks = [];
+
+            // Read the stream and convert it to a buffer
+            const processStream = async () => {
+                const { value, done } = await reader.read();
+                if (done) {
+                    const buffer = Buffer.concat(chunks);
+                    const base64Image = buffer.toString("base64");
+                    res.status(200).json({
+                        imageUrl: `data:image/jpeg;base64,${base64Image}`,
+                    });
+                } else {
+                    chunks.push(value);
+                    processStream();
+                }
+            };
+
+            await processStream();
+        } else if (typeof prediction === "string") {
             res.status(200).json({ imageUrl: prediction });
         } else if (prediction && prediction.output) {
             res.status(200).json({ imageUrl: prediction.output[0] });

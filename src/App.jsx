@@ -5,7 +5,9 @@ import Footer from "../src/components/footer/footer";
 function App() {
     return (
         <div className="h-screen flex flex-col justify-between">
-            <Terminal />
+            <div className="flex-grow">
+                <Terminal />
+            </div>
             <Footer />
         </div>
     );

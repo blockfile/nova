@@ -141,12 +141,19 @@
     overflow-y: scroll; /* Allows scrolling */
     scrollbar-width: none; /* Hides scrollbar for Firefox */
     -ms-overflow-style: none; /* Hides scrollbar for IE/Edge */
+    margin-bottom: 10px;
 }
 
 .terminal-content::-webkit-scrollbar {
     display: none; /* Hides scrollbar for Chrome, Safari, Opera */
 }
+.terminal-content p::before {
+    content: "";
+}
 
+.terminal-content p:has(> img) {
+    margin-top: 15px;
+}
 .terminal-input {
     background: transparent;
     color: #ebdd1d;
@@ -224,4 +231,22 @@
     top: 5px;
     left: -10px;
     color: #1bc7fb;
+}
+.user-command {
+    margin-top: 20px; /* Space above the user command */
+    color: #ffffff; /* Default white for user command */
+}
+
+.nova-response-container {
+    margin-top: 15px; /* Space above Nova's response */
+}
+
+.nova-response {
+    color: #eff300; /* Light cyan for response text */
+    font-weight: bold;
+}
+
+.nova-prefix {
+    color: #f70707; /* Yellow for the "Nova:" prefix */
+    font-weight: bold;
 }
